@@ -56,11 +56,16 @@ public class DeviceController : MonoBehaviour {
     {
         if(tipD != null && endD != null)    // yama 180214 デバイスの先端，後端の情報を取得しているかどうか
         {
+            /*デバイスの後端から先端の向きにRay発射*/
             ray = new Ray(endD.transform.position, (tipD.transform.position - endD.transform.position));
-            hits = Physics.RaycastAll(ray.origin, ray.direction, 3);
 
+            /*Rayが衝突したすべてのオブジェクトを情報を取得*/
+            hits = Physics.RaycastAll(ray.origin, ray.direction, 3);//なぜ３？
+
+            /*hitsの中身をすべて参照*/
             foreach (RaycastHit hit in hits)
             {
+                /*colliderの名前を判別しRayの衝突位置を取得*/
                 if (hit.collider.name == "Ball")
                 {
                     hitO = hit.point;
@@ -81,7 +86,9 @@ public class DeviceController : MonoBehaviour {
         //sliderLength = Get_SliderMove();
         sliderLength = Get_HitPointLength();    // yama 180214 スライダを伸ばす距離をレイによって算出
 
-        disEtoO = (int)(Vector3.Distance(hitO, endD.transform.position) / 0.5 * 1024);                      // yama 180214 デバイス後端から仮想物体とレイの接触点までの距離
+        /*デバイス後端からオブジェクトまでの長さを算出*/
+        //0.5*1024とは？？？
+        disEtoO = (int)(Vector3.Distance(hitO, endD.transform.position) / 0.5 * 1024);// yama 180214 デバイス後端から仮想物体とレイの接触点までの距離
 
         if (check)  // yama 180220 モータの回転速度を変更するかどうか（仮で使用）
         {            
@@ -149,7 +156,7 @@ public class DeviceController : MonoBehaviour {
     {
         try
         { 
-            if (message != string.Empty)        // yama 180719 受信データが空でないか確認てから処理
+            if (message != string.Empty)        // yama 180719 受信データが空でないか確認してから処理
             {
                 Debug.Log("move = " + message);
 
@@ -205,7 +212,7 @@ public class DeviceController : MonoBehaviour {
         }
     }
 
-    /* 後端に配置したからオブジェクトの取得 */
+    /* 後端に配置した空オブジェクトの取得 */
     void GetEnd(GameObject obj)
     {
         endD = obj;
