@@ -137,7 +137,7 @@ void LightSensor_LED(int Led){
   analogWrite(Led, val/4);
 
   /*センサの値を送信*/
-  Serial.prin tln(val);
+  Serial.println(val);
   
   delay(10);
 
