@@ -1,5 +1,5 @@
-#define SPEED1 240  // スライダを縮める場合
-#define SPEED2 170  // スライダを高速で動かす場合（これが最高速）
+#define SPEED2 240  // スライダを縮める場合
+#define SPEED1 170  // スライダを高速で動かす場合（これが最高速）
 #define JITTER 6    // スライダが正しい位置に移動したかを判定する閾値
 
 int slide;        // 受信したデータ（スライダを移動させる位置）
@@ -126,4 +126,3 @@ void key_move(char mode){
 
   delay(10);
 }
-
