@@ -9,7 +9,7 @@ public class SerialHandler : MonoBehaviour
     public event SerialDataReceivedEventHandler OnDataReceived;
 
     public string portName = "COM3"; // ポート名(Macだと/dev/tty.usbmodem1421など)
-    public int baudRate = 38400;  // ボーレート(Arduinoに記述したものに合わせる)
+    public int baudRate = 38400;//9600;  // ボーレート(Arduinoに記述したものに合わせる)
 
     private SerialPort serialPort_;
     private Thread thread_;
